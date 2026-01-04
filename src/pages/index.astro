@@ -1,0 +1,323 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+	</head>
+	<body>
+		<Header />
+		<main class="page">
+			<section class="hero" aria-labelledby="intro-title">
+				<p class="eyebrow">Engineering leader · Founder</p>
+				<h1 id="intro-title">Jeremy Hon</h1>
+				<p class="lead">
+					I’m an engineering leader and founder who has spent the last several years building and rebuilding
+					a B2B workforce platform through pre-PMF uncertainty, rapid growth, COVID-era stagnation, layoffs,
+					and a focused revival.
+				</p>
+				<p class="lead">
+					I’ve stayed hands-on throughout, not out of preference for control, but because the company
+					repeatedly needed hard technical decisions made quickly under constraint.
+				</p>
+				<div class="hero-actions">
+					<a class="button primary" href="#staffany">StaffAny</a>
+					<a class="button" href="#focus">Technical focus</a>
+				</div>
+				<p class="hero-note">
+					This site, like my resume, is co-written with AI. That’s intentional.
+				</p>
+			</section>
+
+			<section id="about" class="section">
+				<div class="section-header">
+					<h2>About</h2>
+					<p>Not a resume. A readable narrative version of the same story.</p>
+				</div>
+				<div class="card">
+					<p>
+						I build durable systems, lead small senior teams, and take responsibility for the hard calls
+						when the stakes are high and the time is short. I value clarity, pragmatic scope decisions, and
+						technical work that moves the business forward without unnecessary drama.
+					</p>
+				</div>
+			</section>
+
+			<section id="staffany" class="section">
+				<div class="section-header">
+					<h2>StaffAny — Co-Founder &amp; CTO</h2>
+					<p>Singapore · 2018–Present</p>
+				</div>
+				<div class="card">
+					<p>
+						StaffAny is a B2B workforce management platform serving roughly 70k monthly active users across
+						~500 customer organizations. The product sits somewhere between mission-critical and
+						business-as-usual essential: when it goes down, operations and payroll stop.
+					</p>
+					<p>
+						At peak, the business reached low seven-figure SGD ARR. Over time, the company went through
+						several distinct phases, each of which shaped how I operate as a technical leader.
+					</p>
+				</div>
+
+				<div class="section-header">
+					<h3>Selected work</h3>
+					<p>Decisions that defined the platform’s trajectory.</p>
+				</div>
+
+				<div class="stack">
+					<article class="card">
+						<h4>Payroll module (Q4 2023 → Q1 2024)</h4>
+						<p>
+							By late 2023, the company needed a step-change within a single quarter. Payroll emerged as
+							the clearest strategic focus, but the scope was realistically a two-quarter build.
+						</p>
+						<p>
+							My role was not to choose payroll, but to push hard for an aggressive delivery timeline
+							anyway. To make this feasible, I drove a series of scope and sequencing decisions:
+						</p>
+						<ul class="facts">
+							<li>Ruthlessly cut non-essential features</li>
+							<li>Built onboarding first to allow pilot customers before full payroll rollout</li>
+							<li>Accepted iteration post-launch rather than blocking on completeness</li>
+						</ul>
+						<p>
+							The module launched on time in Q1 2024 and was iterated on rapidly thereafter. Over the
+							following months, payroll was adopted by ~50% of the customer base, customer churn dropped
+							from ~20% to ~10%, and payroll now contributes ~20–30% of revenue.
+						</p>
+					</article>
+
+					<article class="card">
+						<h4>Internal ERP / billing system</h4>
+						<p>
+							For a long time, revenue tracking depended on spreadsheets manually maintained by the
+							revenue team. As part of the Series A process, we were mandated to move off spreadsheets.
+							An Oracle NetSuite quote came in at roughly SGD 50k, which felt disproportionate to our
+							needs and stage.
+						</p>
+						<p>
+							I pushed to build a custom internal system that integrated HubSpot, Stripe, and product
+							data. Delivered with roughly 0.5–1.5 engineers, it is purpose-built for our workflows
+							rather than generic ERP abstractions. The system now handles contract signing, billing
+							logic, and real-time revenue visibility.
+						</p>
+					</article>
+
+					<article class="card">
+						<h4>Phone-number authentication via WhatsApp</h4>
+						<p>
+							Our user base is heavily phone-number-centric. We relied on Firebase SMS authentication,
+							which worked in Singapore but became extremely costly in Malaysia and Indonesia.
+						</p>
+						<p>
+							I built a phone-number authentication system that uses WhatsApp as a first-class auth
+							channel, routes by country, and automatically falls back between WhatsApp and SMS on
+							delivery failure.
+						</p>
+						<p>
+							The result: authentication spend reduced by ~10×, delivery rates comparable to SMS-only
+							flows, and no regression in user experience.
+						</p>
+					</article>
+
+					<article class="card">
+						<h4>Cost cutting &amp; efficiency</h4>
+						<p>
+							During a broader cost-cutting push, I noticed our BigQuery spend growing into the low
+							thousands per month despite relatively low query volume. After identifying the root
+							cause, we fixed it immediately.
+						</p>
+						<p>
+							The fix reduced BigQuery costs by ~90% overnight and kicked off a broader infrastructure
+							review, resulting in roughly a 50% reduction in total cloud spend without meaningful
+							degradation in reliability or performance.
+						</p>
+					</article>
+				</div>
+
+				<div class="section-header">
+					<h3>Current state (hands-on)</h3>
+					<p>Post-mid-2024 downsizing: small, senior-heavy team.</p>
+				</div>
+				<div class="card">
+					<ul class="facts">
+						<li>I review ~30–50% of production code</li>
+						<li>I write code across backend, infrastructure, data, and AI-related systems</li>
+						<li>The platform runs in a single region with &lt;SGD 10k monthly cloud spend</li>
+						<li>We typically see 1–3 incidents per year, each ~1 hour in duration</li>
+						<li>I’m the default escalation point for complex technical and architectural decisions</li>
+					</ul>
+				</div>
+			</section>
+
+			<section id="earlier" class="section">
+				<div class="section-header">
+					<h2>Earlier experience</h2>
+				</div>
+				<div class="timeline">
+					<div class="timeline-item">
+						<h3>UpGuard — Software Engineering / SRE Intern</h3>
+						<p class="muted">Mountain View, CA · 2017</p>
+					</div>
+					<div class="timeline-item">
+						<h3>ShopBack — Tech Intern</h3>
+						<p class="muted">2016</p>
+					</div>
+					<div class="timeline-item">
+						<h3>NUS Overseas Colleges — Silicon Valley (Batch 31)</h3>
+						<p class="muted">2017</p>
+					</div>
+				</div>
+			</section>
+
+			<section id="education" class="section">
+				<div class="section-header">
+					<h2>Education</h2>
+				</div>
+				<div class="card">
+					<h3>National University of Singapore</h3>
+					<p class="muted">Bachelor of Computing (Computer Science), 2018</p>
+				</div>
+			</section>
+
+			<section id="focus" class="section">
+				<div class="section-header">
+					<h2>Technical focus</h2>
+					<p>Comfortable designing, building, and debugging production systems using:</p>
+				</div>
+				<div class="card">
+					<ul class="facts two-column">
+						<li>Node.js</li>
+						<li>PostgreSQL</li>
+						<li>BigQuery</li>
+						<li>dbt</li>
+						<li>AWS (ECS, RDS, CloudWatch)</li>
+						<li>Next.js</li>
+						<li>React</li>
+						<li>React Native</li>
+					</ul>
+				</div>
+			</section>
+
+			<section id="contact" class="section">
+				<div class="section-header">
+					<h2>Contact</h2>
+					<p>Open to thoughtful conversations about product, platform, and teams.</p>
+				</div>
+				<div class="card contact-card">
+					<div>
+						<p class="lead">Email: jeremy.hon.gy@gmail.com</p>
+						<p class="muted">LinkedIn: linkedin.com/in/jeremy-hon · GitHub: github.com/jeremyhon</p>
+					</div>
+					<a class="button primary" href="mailto:jeremy.hon.gy@gmail.com">Email me</a>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.page {
+		display: flex;
+		flex-direction: column;
+		gap: 5rem;
+	}
+	.hero {
+		padding-top: 2rem;
+		display: grid;
+		gap: 1.5rem;
+	}
+	.eyebrow {
+		font-size: 1rem;
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		color: rgb(var(--gray));
+		margin: 0;
+	}
+	.lead {
+		font-size: 1.2rem;
+		max-width: 38rem;
+	}
+	.hero-actions {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+	.hero-note {
+		color: rgb(var(--gray));
+		font-size: 0.95rem;
+		margin: 0;
+	}
+	.section {
+		display: grid;
+		gap: 2rem;
+	}
+	.section-header p {
+		margin: 0.5rem 0 0;
+		color: rgb(var(--gray));
+	}
+	.card {
+		background: #fff;
+		border-radius: 16px;
+		box-shadow: var(--box-shadow);
+		padding: 2rem;
+	}
+	.facts {
+		margin: 1rem 0 0;
+		padding-left: 1.2rem;
+	}
+	.timeline {
+		display: grid;
+		gap: 1.5rem;
+	}
+	.timeline-item {
+		background: rgba(var(--gray-light), 60%);
+		border-radius: 16px;
+		padding: 1.5rem;
+		display: grid;
+		gap: 0.75rem;
+	}
+	.stack {
+		display: grid;
+		gap: 1.5rem;
+	}
+	.contact-card {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 2rem;
+		flex-wrap: wrap;
+	}
+	.button {
+		padding: 0.7rem 1.4rem;
+		border-radius: 999px;
+		border: 1px solid rgba(var(--gray), 40%);
+		text-decoration: none;
+		color: rgb(var(--gray-dark));
+	}
+	.button.primary {
+		background: var(--accent);
+		color: #fff;
+		border-color: var(--accent);
+	}
+	.muted {
+		color: rgb(var(--gray));
+	}
+	.two-column {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+		gap: 0.5rem 1.5rem;
+	}
+	@media (max-width: 720px) {
+		.hero {
+			padding-top: 0;
+		}
+	}
+</style>
