@@ -1,0 +1,233 @@
+---
+title: Home
+---
+
+<section class="hero" aria-labelledby="intro-title">
+  <p class="eyebrow">Engineering leader · Founder</p>
+  <h1 id="intro-title">Jeremy Hon</h1>
+  <p class="lead">
+    I’m an engineering leader and founder who has spent the last several years building a B2B
+    workforce platform through pre-PMF uncertainty, rapid growth, COVID-era uncertainty, layoffs,
+    and a focused revival.
+  </p>
+  <p class="hero-note">This website is quite hastily thrown together, so I'm sorry for the jank!</p>
+</section>
+
+<section class="section" aria-labelledby="contents-title">
+  <div class="section-header">
+    <h2 id="contents-title">Contents</h2>
+  </div>
+  <div class="card">
+    <ul class="facts two-column">
+      <li>
+        <a href="#staffany">StaffAny</a>
+      </li>
+      <li>
+        <a href="#earlier">Earlier experience</a>
+      </li>
+      <li>
+        <a href="#education">Education</a>
+      </li>
+      <li>
+        <a href="#focus">Technical focus</a>
+      </li>
+      <li>
+        <a href="#contact">Contact</a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="staffany" class="section">
+	<div class="section-header">
+		<h2>StaffAny — Co-Founder &amp; CTO</h2>
+		<p>Singapore · 2018–Present</p>
+	</div>
+	<div class="card">
+		<p>
+			StaffAny is a B2B workforce management platform serving roughly 70k monthly active users across ~500
+			customer organizations. The product sits somewhere between mission-critical and business-as-usual essential:
+			when it goes down, operations and payroll stop.
+		</p>
+		<p>
+			The business currently has a seven-figure SGD ARR and is profitable. Over time, the company went through several distinct
+			phases, each of which shaped how I operate as a technical leader and founder.
+		</p>
+	</div>
+
+    <div class="section-header staffany-contents">
+    	<h3>Contents</h3>
+    	<ul class="facts">
+    		<li><a href="#payroll-module">Payroll module</a></li>
+    		<li><a href="#internal-erp">Internal ERP / billing system</a></li>
+    		<li><a href="#whatsapp-auth">Phone-number authentication via WhatsApp</a></li>
+    		<li><a href="#cost-cutting">Cost cutting &amp; efficiency</a></li>
+    		<li><a href="#current-state">Current state (hands-on)</a></li>
+    	</ul>
+    </div>
+
+    <div class="section-header">
+    	<h3>Selected work</h3>
+    	<p>I've selected several projects that I think are the most interesting and impactful (and also most directly attributable to me)</p>
+    </div>
+
+    <div class="stack">
+    	<article class="card" id="payroll-module">
+    		<h4>Payroll module (Q4 2023 → Q1 2024)</h4>
+    		<p>
+    			By late 2023, the company needed a step-change within a single quarter. Payroll emerged as the clearest
+    			strategic focus, but the scope was realistically a two-quarter build.
+    		</p>
+    		<p>
+    			The team was very hesistant to commit but I pushed hard for an aggressive delivery timeline anyway. To make
+    			this feasible, I drove a series of scope and sequencing decisions:
+    		</p>
+    		<ul class="facts">
+    			<li>Ruthlessly cut non-essential features, or sequenced them at the end</li>
+    			<li>Built onboarding first to allow pilot customers to onboard before full payroll rollout</li>
+    			<li>Accepted iteration post-launch rather than blocking on completeness</li>
+    		</ul>
+    		<p>
+    			We started onboarding customers at the end of Q4 2023, bearing in mind that onboarding each customer would take a couple weeks. The first customer payroll was run for the month of Jan 2024.
+    		</p>
+    		<p>
+    			Since then, we've iterated significantly on the module, launched a second country, and its become an essential part of the company's offerings. Payroll is now adopted by ~50% of the customer base, customer churn dropped from ~20% to ~10%, and contributes ~20–30% of revenue.
+    		</p>
+    		<p class="reflection">Building payroll was intensely exciting and harrowing. It reminded me of what a tight team with ambitious goals could pull off. The key insight here was recognizing shipping onboarding first which was simpler (and customers take a few weeks to onboard properly). </p>
+    	</article>
+
+    	<article class="card" id="internal-erp">
+    		<h4>Internal ERP / billing system</h4>
+    		<p>
+    			From 2018–2021, revenue tracking lived in spreadsheets manually maintained by the CRO. During the Series A
+    			process we were required to move off spreadsheets. An Oracle NetSuite quote came in at roughly SGD 50k,
+    			which felt disproportionate to our needs and stage.
+    		</p>
+    		<p>
+    			Our deal structures were too bespoke and changed too often for a fast off-the-shelf rollout, so I pushed to build a custom
+    			internal system instead.
+    		</p>
+    		<p>
+    			The system had to model multi-entity, multi-product agreements with varying terms across countries and
+    			currencies. We built it on HubSpot, integrated Stripe for billing and SignNow for contracts, wired it into
+    			the product for entitlement enforcement, and pushed data into BigQuery for real-time revenue visibility.
+    		</p>
+    		<p>
+    			Delivered by roughly 0.5–1.5 engineers over a couple of quarters, it now runs contract signing, billing
+    			logic, and revenue reporting end to end.
+    		</p>
+    		<p class="reflection">If I was doing this today I would probably not build on top of HubSpot. Hubspot ultimately didn't buy us that much more time, and it's much clunkier and less flexible than if we'd built our own service.</p>
+    	</article>
+
+    	<article class="card" id="whatsapp-auth">
+    		<h4>Phone-number authentication via WhatsApp</h4>
+    		<p>
+    			Our user base is heavily phone-number-centric. We relied on Firebase SMS authentication, which worked in
+    			Singapore but became extremely costly in Malaysia and Indonesia. An SMS costs 5c in SG and 20c in Indonesia. Bearing in mind that we charge indonesian users less, this became untenable.
+    		</p>
+    		<p>
+    			I built a phone-number authentication system that uses WhatsApp as a first-class auth channel, routes by
+    			country, and automatically falls back between WhatsApp and SMS on delivery failure. WhatsApp charges much more reasonable rates for indonesian users.
+    		</p>
+    		<p>
+    			The result: authentication spend reduced by ~10×, delivery rates comparable to SMS-only flows, and no
+    			regression in user experience.
+    		</p>
+    		<p class="reflection">Note to self: Don't build a service that depends on phone number auth.</p>
+    	</article>
+
+    	<article class="card" id="cost-cutting">
+    		<h4>Cost cutting &amp; efficiency</h4>
+    		<p>
+    			During a broader cost-cutting push, I noticed our BigQuery spend growing into the low thousands per month
+    			despite relatively low query volume. We had a consultant come in, and while they were starting up their big review project,
+    			an engineer noticed a production path querying an unoptimized bigquery table. That dropped our costs overnight by 90%.
+    		</p>
+    		<p>
+    			As part of the same push, We also achieved roughly a 50% reduction in total cloud spend without meaningful degradation in reliability or
+    			performance.
+    		</p>
+    		<p class="reflection">Behind every 10x cost decrease is a very dumb mistake</p>
+    	</article>
+    </div>
+
+    <div class="section-header" id="current-state">
+    	<h3>Current state (hands-on)</h3>
+    	<p>Post-mid-2024 downsizing: small team of about 10.</p>
+    </div>
+    <div class="card">
+    	<ul class="facts">
+    		<li>I review ~30–50% of production code</li>
+    		<li>I write code across backend, infrastructure, data, and AI-related systems</li>
+    		<li>The platform runs in a single region with &lt;SGD 10k monthly cloud spend</li>
+    		<li>We typically see 1–3 incidents per year, each ~1 hour in duration</li>
+    		<li>I’m the default escalation point for tough technical decisions</li>
+    	</ul>
+    </div>
+
+</section>
+
+<section id="earlier" class="section">
+  <div class="section-header">
+    <h2>Earlier experience</h2>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item">
+      <h3>UpGuard — Software Engineering / SRE Intern</h3>
+      <p class="muted">Mountain View, CA · 2017</p>
+    </div>
+    <div class="timeline-item">
+      <h3>ShopBack — Tech Intern</h3>
+      <p class="muted">2016</p>
+    </div>
+    <div class="timeline-item">
+      <h3>NUS Overseas Colleges — Silicon Valley (Batch 31)</h3>
+      <p class="muted">2017</p>
+    </div>
+  </div>
+</section>
+
+<section id="education" class="section">
+  <div class="section-header">
+    <h2>Education</h2>
+  </div>
+  <div class="card">
+    <h3>National University of Singapore</h3>
+    <p class="muted">Bachelor of Computing (Computer Science), 2018</p>
+  </div>
+</section>
+
+<section id="focus" class="section">
+  <div class="section-header">
+    <h2>Technical focus</h2>
+    <p>Comfortable designing, building, and debugging production systems using:</p>
+  </div>
+  <div class="card">
+    <ul class="facts two-column">
+      <li>Node.js</li>
+      <li>PostgreSQL</li>
+      <li>BigQuery</li>
+      <li>dbt</li>
+      <li>AWS (ECS, RDS, CloudWatch)</li>
+      <li>Next.js</li>
+      <li>React</li>
+      <li>React Native</li>
+    </ul>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div class="section-header">
+    <h2>Contact</h2>
+    <p>Open to thoughtful conversations about product, platform, and teams.</p>
+  </div>
+  <div class="card contact-card">
+    <div>
+      <p class="lead">Email: jeremy.hon.gy@gmail.com</p>
+      <p class="muted">LinkedIn: linkedin.com/in/jeremy-hon · GitHub: github.com/jeremyhon</p>
+    </div>
+    <a class="button primary" href="mailto:jeremy.hon.gy@gmail.com">
+      Email me
+    </a>
+  </div>
+</section>
